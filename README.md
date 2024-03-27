@@ -15,11 +15,15 @@ Currently supported actions are:
 
 You can install the package via composer:
 
-`composer require johntout/laravel-forge-panel`
+```
+composer require johntout/laravel-forge-panel
+```
 
 Then run the install command to publish the assets.
 
-`php artisan laravel-forge-panel:install`
+```
+php artisan laravel-forge-panel:install
+```
 
 In your `.env` file you must save the following env variables in order to connect to your Laravel Forge account:
 
@@ -30,9 +34,12 @@ LARAVEL_FORGE_SITE_ID=
 ```
 You can obtain your token through your **[Laravel Forge profile](https://forge.laravel.com/user-profile/api)**. The server id and the site id can be found on the top of your Laravel Forge site page.
 
-You can access the Laravel Forge panel by visiting the page `/forge-panel`. By default the panel is accessible in local environment. On production environment you must define the Gate below, with your criteria, in order to access the panel.
+You can access the Laravel Forge panel by visiting the page `/forge-panel`. By default the panel is accessible in local environment. On production environment you must define the Gate below in the `boot` method of your `AppServiceProvider`, with your criteria, in order to access the panel.
 
 ```
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 Gate::define('viewLaravelForgePanel', function (User $user) {
     return $user->is_developer;
 });
