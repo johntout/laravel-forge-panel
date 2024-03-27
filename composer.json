@@ -1,0 +1,82 @@
+{
+    "name": "johntout/laravel-forge-panel",
+    "description": "Add a panel to your app to manage various actions on Laravel Forge",
+    "type": "library",
+    "require": {
+        "php": "^8.2",
+        "laravel/forge-sdk": "^3.14",
+        "illuminate/routing": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "livewire/livewire": "^3.4"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-arch": "^2.7",
+        "pestphp/pest-plugin-laravel": "^2.3",
+        "pestphp/pest-plugin-faker": "^2.0",
+        "pestphp/pest-plugin-livewire": "^2.1",
+        "laravel/pint": "^1.14",
+        "mockery/mockery": "^1.3.1",
+        "phpunit/phpunit": "^10.4",
+        "orchestra/testbench": "8.20.0|^9.0",
+        "laravel/prompts": "^0.1.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "JohnTout\\LaravelForgePanel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JohnTout\\LaravelForgePanel\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JohnTout\\LaravelForgePanel\\LaravelForgePanelServiceProvider"
+            ],
+            "aliases": {
+                "LaravelForgePanel": "JohnTout\\LaravelForgePanel\\Facades\\LaravelForgePanel"
+            }
+        }
+    },
+    "authors": [
+        {
+            "name": "Ioannis Toutoulis",
+            "email": "john.toutoulis@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "lint": [
+            "@php vendor/bin/pint",
+            "@php vendor/bin/phpstan analyse"
+        ],
+        "test": [
+            "@php vendor/bin/pest"
+        ]
+    }
+}

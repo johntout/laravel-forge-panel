@@ -1,0 +1,6 @@
+.idea
+.phpunit.cache
+composer.lock
+phpunit.xml
+testbench.yaml
+vendor
