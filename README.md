@@ -9,6 +9,8 @@ Currently supported actions are:
 - Get and update .env file
 - Execute commands
 
+![Laravel Forge Panel](./laravel-forge-panel-screenshot.png?raw=true "Laravel Forge Panel")
+
 ## Installation
 
 You can install the package via composer:
