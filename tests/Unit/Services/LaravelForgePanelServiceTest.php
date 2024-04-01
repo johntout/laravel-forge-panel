@@ -107,3 +107,17 @@ test('command history', function () {
         return $request->url() == LaravelForgePanel::apiUrl().'/servers/server_id/sites/site_id/commands';
     });
 });
+
+test('scheduled jobs', function () {
+    Http::fake(function () {
+        return Http::response(['jobs' => []]);
+    });
+
+    expect(LaravelForgePanel::listScheduledJobs())->toBeArray();
+
+    Http::assertSentCount(1);
+
+    Http::assertSent(function (Request $request) {
+        return $request->url() == LaravelForgePanel::apiUrl().'/servers/server_id/jobs';
+    });
+});
