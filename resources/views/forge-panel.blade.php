@@ -10,8 +10,10 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-        <link href="{{ asset('vendor/laravel-forge-panel/app-B86EBUZl.css') }}" rel="stylesheet">
-        <script src="{{ asset('vendor/laravel-forge-panel/app-D2jpX1vH.js') }}"></script>
+{{--        <link href="{{ asset('vendor/laravel-forge-panel/app-B86EBUZl.css') }}" rel="stylesheet">--}}
+{{--        <script src="{{ asset('vendor/laravel-forge-panel/app-D2jpX1vH.js') }}"></script>--}}
+
+        @vite('resources/css/app.css')
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gradient-to-r from-cyan-900 to-blue-900 bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
@@ -26,6 +28,7 @@
 
                             <livewire:env lazy />
                             <livewire:command-history lazy />
+                            <livewire:scheduled-jobs lazy />
                         </div>
                     </main>
 
