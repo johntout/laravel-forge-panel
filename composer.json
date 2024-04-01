@@ -2,6 +2,7 @@
     "name": "johntout/laravel-forge-panel",
     "description": "Add a panel to your app to manage various actions on Laravel Forge",
     "type": "library",
+    "keywords": ["laravel", "laravel forge"],
     "require": {
         "php": "^8.2",
         "laravel/forge-sdk": "^3.14",
