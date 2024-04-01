@@ -8,6 +8,7 @@ use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Laravel\Forge\Resources\Job;
 use Laravel\Forge\Resources\Server;
 use Laravel\Forge\Resources\Site;
 use Laravel\Forge\Resources\SiteCommand;
@@ -133,6 +134,19 @@ class LaravelForgePanelService
         $response->throw();
 
         return $this->transformData($response->json()['commands'], SiteCommand::class);
+    }
+
+    /**
+     * @throws RequestException
+     */
+    public function listScheduledJobs(): array
+    {
+        $response = $this->pendingRequest
+            ->get($this->apiUrl.'/servers/'.$this->serverId.'/jobs');
+
+        $response->throw();
+
+        return $this->transformData($response->json()['jobs'], Job::class);
     }
 
     private function transformData(array $forgeData, string $class): array

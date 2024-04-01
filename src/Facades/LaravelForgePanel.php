@@ -15,7 +15,7 @@ use JohnTout\LaravelForgePanel\Services\LaravelForgePanelService;
  * @method static updateSiteEnvFile(string $content)
  * @method static executeSiteCommand(array $data)
  * @method static commandHistory()
- * @method static assertRequestSent()
+ * @method static listScheduledJobs()
  */
 class LaravelForgePanel extends Facade
 {

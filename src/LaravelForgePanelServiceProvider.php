@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use JohnTout\LaravelForgePanel\Commands\InstallCommand;
 use JohnTout\LaravelForgePanel\Livewire\CommandHistory;
 use JohnTout\LaravelForgePanel\Livewire\Env;
+use JohnTout\LaravelForgePanel\Livewire\ScheduledJobs;
 use JohnTout\LaravelForgePanel\Livewire\ServerInformation;
 use JohnTout\LaravelForgePanel\Livewire\SiteInformation;
 use JohnTout\LaravelForgePanel\Services\LaravelForgePanelService;
@@ -60,6 +61,7 @@ class LaravelForgePanelServiceProvider extends ServiceProvider
         Livewire::component('site-information', SiteInformation::class);
         Livewire::component('env', Env::class);
         Livewire::component('command-history', CommandHistory::class);
+        Livewire::component('scheduled-jobs', ScheduledJobs::class);
     }
 
     /**
