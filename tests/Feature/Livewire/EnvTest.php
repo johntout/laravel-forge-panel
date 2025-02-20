@@ -9,6 +9,13 @@ beforeEach(function () {
     Http::fake();
 });
 
+
+test('function save can not be called due to 403', function () {
+    livewire(Env::class)
+        ->call('save', '1.ls -ali')
+        ->assertForbidden();
+});
+
 test('component renders', function () {
     livewire(Env::class)
         ->assertOk()
@@ -18,6 +25,8 @@ test('component renders', function () {
 });
 
 test('save only with env', function () {
+    asAdmin();
+
     livewire(Env::class)
         ->call('save');
 
@@ -25,6 +34,8 @@ test('save only with env', function () {
 });
 
 test('save with command', function () {
+    asAdmin();
+
     livewire(Env::class, ['command' => 'test-command'])
         ->assertSet('command', 'test-command')
         ->call('save')

@@ -27,7 +27,7 @@ php artisan laravel-forge-panel:install
 
 In your `.env` file you must save the following env variables in order to connect to your Laravel Forge account:
 
-```
+```dotenv
 LARAVEL_FORGE_TOKEN=
 LARAVEL_FORGE_SERVER_ID=
 LARAVEL_FORGE_SITE_ID=
@@ -36,7 +36,7 @@ You can obtain your token through your **[Laravel Forge profile](https://forge.l
 
 You can access the Laravel Forge panel by visiting the page `/forge-panel`. By default the panel is accessible in local environment. On production environment you must define the Gate below in the `boot` method of your `AppServiceProvider`, with your criteria, in order to access the panel.
 
-```
+```php
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
@@ -47,7 +47,7 @@ Gate::define('viewLaravelForgePanel', function (User $user) {
 
 Config file:
 
-```
+```php
 return [
     'middleware' => [
         'web',

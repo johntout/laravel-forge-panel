@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace JohnTout\LaravelForgePanel\Livewire;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Log;
 use JohnTout\LaravelForgePanel\Facades\LaravelForgePanel;
 use Livewire\Attributes\On;
@@ -37,8 +38,13 @@ class CommandHistory extends Component
         return view('laravel-forge-panel::livewire.placeholders.command-history-placeholder');
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function run(string $command): void
     {
+        $this->authorize('viewLaravelForgePanel');
+
         LaravelForgePanel::executeSiteCommand(['command' => explode('.', $command)[1]]);
     }
 }
