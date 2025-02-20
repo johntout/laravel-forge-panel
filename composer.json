@@ -8,7 +8,7 @@
         "laravel/forge-sdk": "^3.14",
         "illuminate/routing": "^10.0|^11.0",
         "illuminate/support": "^10.0|^11.0",
-        "livewire/livewire": "^3.4"
+        "livewire/livewire": "^v3.5.20"
     },
     "require-dev": {
         "pestphp/pest": "^2.34",

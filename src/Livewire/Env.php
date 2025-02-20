@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace JohnTout\LaravelForgePanel\Livewire;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use JohnTout\LaravelForgePanel\Facades\LaravelForgePanel;
 use Livewire\Component;
 
@@ -18,8 +19,13 @@ class Env extends Component
         $this->env = LaravelForgePanel::env();
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function save(): void
     {
+        $this->authorize('viewLaravelForgePanel');
+
         try {
             LaravelForgePanel::updateSiteEnvFile($this->env);
 
